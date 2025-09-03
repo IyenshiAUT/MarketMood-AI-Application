@@ -1,9 +1,7 @@
-```markdown
 # 🚀 MarketMood AI - Financial News Analyzer &  Summarizer: Application Repository
 
 This repository contains the **production-ready FastAPI application** that serves the machine learning models. It is built to be lightweight and scalable, retrieving the latest **"Production" model** from the MLflow Model Registry at runtime.
 
----
 
 ## 📁 Repository Structure
 ```
