@@ -56,28 +56,28 @@ The `.github/workflows/build_and_deploy.yml` pipeline automates the deployment p
 ```bash
 git clone https://github.com/IyenshiAUT/MarketMood-AI-Application.git
 cd marketmood-ai-application
-
+---
 ### 2. Create and Activate Virtual Environment
 ```bash
 python -m venv venv
 source venv/bin/activate # On Linux/MacOS
 venv\Scripts\activate # On Windows
-
+---
 ### 3. Install Dependencies
 ```bash
 python -m venv venv
 source venv/bin/activate # On Linux/MacOS
 venv\Scripts\activate # On Windows
-
+---
 ### 4. Run Locally with Uvicorn
 ```bash
 uvicorn app.api.main:app --host 0.0.0.0 --port 8000 --reload
-
+---
 ## 🐳 Run with Docker
 - Build Image
 ```bash
 docker build -t financial-news-analyzer-app .
-
+---
 - Run Container
 ```bash
 docker run -d -p 8000:8000 \
