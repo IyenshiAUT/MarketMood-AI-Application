@@ -1,30 +1,66 @@
-🤖 Financial News Analyzer: AI/ML Repository
-This repository contains the core machine learning models and training pipelines for the Financial News Analyzer project. It is the single source of truth for model development, experimentation, and versioning.
+```markdown
+# 🚀 MarketMood AI - Financial News Analyzer &  Summarizer: Application Repository
 
-📁 Repository Structure
-ai_ml_repo/
+This repository contains the **production-ready FastAPI application** that serves the machine learning models. It is built to be lightweight and scalable, retrieving the latest **"Production" model** from the MLflow Model Registry at runtime.
+
+---
+
+## 📁 Repository Structure
+```
+
+application\_repo/
 ├── .github/
 │   └── workflows/
-│       └── train_and_promote.yml
-├── model_training/
-│   ├── scripts/
-│   │   ├── train_sentiment.py
-│   │   └── train_summarization.py
-│   └── requirements.txt
-├── mlops/
-│   └── promote_models.py
-└── README.md
+│       └── build\_and\_deploy.yml   # CI/CD workflow
+├── app/
+│   ├── api/
+│   │   └── main.py                # FastAPI entrypoint
+│   └── requirements.txt           # Python dependencies
+├── Dockerfile                     # Docker image definition
+└── README.md                      # Documentation
 
-🎯 Purpose
-The main goal of this repository is to train and version two key NLP models:
-- A sentiment analysis model (based on FinBERT).
-- A summarization model (based on BART).
+```
 
-When a new model is trained and meets performance criteria, it is automatically logged and promoted to the central MLflow Model Registry by our CI/CD pipeline. This model is then ready to be served by the separate Application API.
+---
 
-🚀 CI/CD Pipeline
-The .github/workflows/train_and_promote.yml pipeline automates the entire process:
-1. Triggers on a push to the main branch or a manual workflow_dispatch.
-2. Installs all necessary dependencies.
-3. Runs the training scripts, which log model performance and artifacts to our shared MLflow server.
-4. Executes the promote_models.py script, which automatically transitions the best-performing model to the "Production" stage in the MLflow Model Registry.
+## 🎯 Purpose
+The main purpose of this repository is to provide a **robust API endpoint** for sentiment analysis and news summarization. 
+
+It is designed with a **decoupled architecture**, meaning the application's code is independent of the model training process.
+
+### The API performs the following functions:
+- Initializes a connection to the **MLflow Model Registry** on startup.
+- Fetches the latest **"Production" model versions** for both sentiment analysis and summarization.
+- Serves these models via a **RESTful API endpoint**, ready to handle incoming requests.
+
+---
+
+## 🚀 CI/CD Pipeline
+The `.github/workflows/build_and_deploy.yml` pipeline automates the deployment process:
+
+1. **Triggers** on a push to the `main` branch or via `workflow_dispatch` (manual run).
+2. **Builds** a new Docker image from the repository's `Dockerfile`.  
+   - This image only contains the application code and dependencies (not the large model files).
+3. **Pushes** the Docker image to a container registry (e.g., **Docker Hub**).
+4. **Deploys** the image to the production server via SSH, passing MLflow server credentials as environment variables.
+
+---
+
+## 📌 Future Enhancements
+- Add request/response logging for better observability.
+- Integrate monitoring and alerting (Prometheus/Grafana).
+- Expand support for additional ML models.
+
+---
+
+## 🛠️ Tech Stack
+- **FastAPI** – Web framework
+- **MLflow** – Model registry & management
+- **Docker** – Containerization
+- **GitHub Actions** – CI/CD automation
+
+---
+
+## 📄 License
+This project is licensed under the MIT License.
+```
