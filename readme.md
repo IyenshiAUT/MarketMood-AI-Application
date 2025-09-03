@@ -14,6 +14,14 @@ application\_repo/
 │   ├── api/
 │   │   └── main.py                # FastAPI entrypoint
 │   └── requirements.txt           # Python dependencies
+├── frontend/
+|   ├── index.html
+|   ├── script.js
+|   ├── style.css                  # Frontend Developement
+| 
+├── tests/
+|   ├── __init__.py
+|   ├── testapi.py                 # Test cases
 ├── Dockerfile                     # Docker image definition
 └── README.md                      # Documentation
 
@@ -41,7 +49,42 @@ The `.github/workflows/build_and_deploy.yml` pipeline automates the deployment p
    - This image only contains the application code and dependencies (not the large model files).
 3. **Pushes** the Docker image to a container registry (e.g., **Docker Hub**).
 4. **Deploys** the image to the production server via SSH, passing MLflow server credentials as environment variables.
+---
+## ▶️ How to Run
 
+### 1. Clone the Repository
+```bash
+git clone https://github.com/IyenshiAUT/MarketMood-AI-Application.git
+cd marketmood-ai-application
+
+### 2. Create and Activate Virtual Environment
+```bash
+python -m venv venv
+source venv/bin/activate # On Linux/MacOS
+venv\Scripts\activate # On Windows
+
+### 3. Install Dependencies
+```bash
+python -m venv venv
+source venv/bin/activate # On Linux/MacOS
+venv\Scripts\activate # On Windows
+
+### 4. Run Locally with Uvicorn
+```bash
+uvicorn app.api.main:app --host 0.0.0.0 --port 8000 --reload
+
+## 🐳 Run with Docker
+- Build Image
+```bash
+docker build -t financial-news-analyzer-app .
+
+- Run Container
+```bash
+docker run -d -p 8000:8000 \
+-e MLFLOW_TRACKING_URI=your_mlflow_server_url \
+-e MLFLOW_TRACKING_USERNAME=your_username \
+-e MLFLOW_TRACKING_PASSWORD=your_password \
+financial-news-analyzer-app
 ---
 
 ## 📌 Future Enhancements
@@ -56,9 +99,3 @@ The `.github/workflows/build_and_deploy.yml` pipeline automates the deployment p
 - **MLflow** – Model registry & management
 - **Docker** – Containerization
 - **GitHub Actions** – CI/CD automation
-
----
-
-## 📄 License
-This project is licensed under the MIT License.
-```
