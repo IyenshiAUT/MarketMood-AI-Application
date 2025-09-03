@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+mlflow
+transformers
+torch
+requests
+python-dotenv
+pydantic
+httpx

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinClarity | AI News Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">MarketMood AI 📈</div>
+            <div class="tab-nav">
+                <button class="tab-link active" data-tab="analyzer">AI Article Analyzer</button>
+                <button class="tab-link" data-tab="fetcher">Live News Feed</button>
+            </div>
+        </header>
+
+        <main>
+            <div id="analyzer" class="tab-content active">
+                <div class="analyzer-grid">
+                    <div class="input-card">
+                        <h3>Enter News Article</h3>
+                        <textarea id="news-input" placeholder="Paste the full text of a financial news article here..."></textarea>
+                        <button id="analyze-btn">
+                            <span class="btn-text">Analyze</span>
+                            <span id="analyzer-loader" class="loader hidden"></span>
+                        </button>
+                    </div>
+                    <div class="results-card">
+                        <h3>Analysis</h3>
+                        <div id="results-placeholder">
+                            <p>Your AI-generated summary and sentiment analysis will appear here.</p>
+                        </div>
+                        <div id="results-output" class="hidden">
+                            <div class="result-item">
+                                <h4>Sentiment</h4>
+                                <p id="sentiment-output"></p>
+                            </div>
+                            <div class="result-item">
+                                <h4>Summary</h4>
+                                <p id="summary-output"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="fetcher" class="tab-content">
+                <div class="fetcher-controls">
+                    <select id="ticker-select">
+                        <option value="">Loading tickers...</option>
+                    </select>
+                    <button id="fetch-btn">
+                         <span class="btn-text">Fetch News</span>
+                         <span id="fetcher-loader" class="loader hidden"></span>
+                    </button>
+                </div>
+                <div id="news-container">
+                    <p class="placeholder-text">Select a ticker from the dropdown to see live news.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

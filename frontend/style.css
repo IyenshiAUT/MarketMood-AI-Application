@@ -1,0 +1,292 @@
+:root {
+    --primary-color: #005f73;
+    --primary-hover: #0a9396;
+    --secondary-color: #e9d8a6;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #343a40;
+    --light-text: #6c757d;
+    --border-color: #dee2e6;
+    --success-color: #2a9d8f;
+    --danger-color: #e63946;
+    --neutral-color: #fca311;
+    --shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.tab-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.tab-link {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background-color: transparent;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--light-text);
+    transition: all 0.3s ease;
+}
+
+.tab-link:hover {
+    background-color: #e9ecef;
+    color: var(--primary-color);
+}
+
+.tab-link.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.hidden { display: none !important; }
+
+/* Analyzer Tab Styles */
+.analyzer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.input-card, .results-card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.input-card h3, .results-card h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    margin-top: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+}
+
+.results-card #results-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--light-text);
+    text-align: center;
+}
+
+.result-item {
+    margin-bottom: 1.5rem;
+}
+.result-item h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--light-text);
+    font-weight: 500;
+}
+.result-item p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+#sentiment-output.positive { color: var(--success-color); font-weight: 600; }
+#sentiment-output.negative { color: var(--danger-color); font-weight: 600; }
+#sentiment-output.neutral { color: var(--neutral-color); font-weight: 600; }
+
+/* News Fetcher Styles */
+.fetcher-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+#ticker-input {
+    flex-grow: 1;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#fetch-btn {
+    width: auto;
+    margin-top: 0;
+    padding: 15px 30px;
+}
+
+#news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.placeholder-text {
+    color: var(--light-text);
+    text-align: center;
+    grid-column: 1 / -1;
+}
+
+.news-card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+.news-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+    flex-grow: 1;
+}
+.news-card .metadata {
+    font-size: 0.8rem;
+    color: var(--light-text);
+    margin-bottom: 1rem;
+}
+.news-card a {
+    font-size: 0.9rem;
+    color: var(--primary-hover);
+    text-decoration: none;
+    font-weight: 600;
+}
+.news-card a:hover { text-decoration: underline; }
+
+/* Loader Styles */
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .analyzer-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .fetcher-controls {
+        flex-direction: column;
+    }
+    #fetch-btn { width: 100%; }
+}
+
+/* Add these styles to your existing style.css file */
+
+.news-card .summary {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--border-color);
+    padding-left: 10px;
+    max-height: 60px; /* Limit visible summary text */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.news-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Pushes actions to the bottom of the card */
+    padding-top: 10px;
+}
+
+.analyze-news-btn {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.analyze-news-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Add these styles to your existing style.css file */
+
+#ticker-select {
+    flex-grow: 1;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+#ticker-select:disabled {
+    cursor: not-allowed;
+    background-color: #e9ecef;
+}
