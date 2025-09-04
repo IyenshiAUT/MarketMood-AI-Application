@@ -19,8 +19,8 @@ logger = logging.getLogger(__name__)
 global sentiment_model, summarization_model, stat
 load_dotenv()
 mlflow_tracking_uri = os.environ.get("MLFLOW_TRACKING_URI")
-os.environ["MLFLOW_TRACKING_USERNAME"] = os.environ["MLFLOW_TRACKING_USERNAME"]
-os.environ["MLFLOW_TRACKING_PASSWORD"] = os.environ["MLFLOW_TRACKING_PASSWORD"]
+os.environ["MLFLOW_TRACKING_USERNAME"] = os.environ.get["MLFLOW_TRACKING_USERNAME"]
+os.environ["MLFLOW_TRACKING_PASSWORD"] = os.environ.get["MLFLOW_TRACKING_PASSWORD"]
 news_api_key = os.environ.get("NEWS_API_KEY")
 
 if not news_api_key:
