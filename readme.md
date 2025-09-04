@@ -65,9 +65,7 @@ venv\Scripts\activate # On Windows
 ```
 ### 3. Install Dependencies
 ```bash
-python -m venv venv
-source venv/bin/activate # On Linux/MacOS
-venv\Scripts\activate # On Windows
+pip install -r app/requirements.txt
 ```
 ### 4. Run Locally with Uvicorn
 ```bash
